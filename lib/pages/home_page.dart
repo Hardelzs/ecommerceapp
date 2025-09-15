@@ -30,13 +30,40 @@ class _HomePageState extends State<HomePage> {
     // cart page
     const CartPaage(),
   ];
-  
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.grey,
       bottomNavigationBar: MyButtomNavBar(
         onTabChange: (index) => navigateBottomBar(index),
+      ),
+      appBar: AppBar(
+        backgroundColor: Colors.transparent,
+        elevation: 0,
+        leading: Builder(builder: (context) => IconButton(
+          icon: const Icon(Icons.menu, color: Colors.black),
+          onPressed: () {
+            Scaffold.of(context).openDrawer();
+          },
+        ),
+        )
+      ),
+      drawer: Drawer(
+        backgroundColor: Colors.grey[900],
+        child: Column(
+          children: [
+            //logo
+            DrawerHeader(
+              child: Image.asset(
+                  'lib/images/nikelogo.png',
+                  )
+              )
+
+
+            //other page
+          ],
+        ),
       ),
       body: _pages[_selectedIndex],
     );
